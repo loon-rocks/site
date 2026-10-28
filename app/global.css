@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@source '../dive/docs/**/*.mdx';
+
+:root {
+  --color-fd-primary: #16a34a;
+  --color-fd-primary-foreground: #ffffff;
+}
+
+.dark {
+  --color-fd-primary: #22c55e;
+  --color-fd-primary-foreground: #052e16;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

@@ -1,0 +1,14 @@
+[tools]
+node = "24"
+
+[tasks.sync]
+description = "Check out the dive submodule and move it to the tip of docs-live"
+run = "git submodule update --init --remote dive"
+
+[tasks.dev]
+description = "Serve the docs site with live reload"
+run = ["npm ci", "npm run dev"]
+
+[tasks.build]
+description = "Build the docs site into out/ as static files"
+run = ["npm ci", "npm run build"]

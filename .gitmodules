@@ -1,0 +1,5 @@
+[submodule "dive"]
+	path = dive
+	url = https://github.com/loon-rocks/dive.git
+	branch = docs-live
+	shallow = true
