@@ -65,7 +65,7 @@ function remarkSnippetImports() {
   };
 }
 
-const MINTLIFY_FLAGS = new Set(['wrap', 'lines', 'expandable']);
+const CODE_FLAGS = new Set(['wrap', 'lines', 'expandable']);
 
 function codeTitle(meta: string): string | undefined {
   const quoted = /title="([^"]*)"/.exec(meta);
@@ -74,7 +74,7 @@ function codeTitle(meta: string): string | undefined {
     .replace(/\{[^}]*\}/g, '')
     .replace(/\w+="[^"]*"/g, '')
     .split(/\s+/)
-    .filter((word) => word && !MINTLIFY_FLAGS.has(word))
+    .filter((word) => word && !CODE_FLAGS.has(word))
     .join(' ');
   return rest || undefined;
 }
@@ -132,4 +132,4 @@ function remarkDocsPath() {
   };
 }
 
-export const mintlify = [remarkSnippetImports, remarkVariables, remarkCodeMeta, remarkCodeGroups, remarkDocsPath];
+export const remarkDocs = [remarkSnippetImports, remarkVariables, remarkCodeMeta, remarkCodeGroups, remarkDocsPath];

@@ -1,7 +1,7 @@
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { pageSchema } from 'fumadocs-core/source/schema';
 import { z } from 'zod';
-import { mintlify } from './lib/mintlify/remark';
+import { remarkDocs } from './lib/docs/remark';
 
 export const docs = defineDocs({
   dir: 'dive/docs',
@@ -26,7 +26,7 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    remarkPlugins: (defaults) => [...mintlify, ...defaults],
+    remarkPlugins: (defaults) => [...remarkDocs, ...defaults],
     remarkImageOptions: false,
     providerImportSource: 'site-mdx-components',
   },

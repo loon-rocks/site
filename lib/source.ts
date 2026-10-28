@@ -1,6 +1,6 @@
 import { docs } from '@/.source/server';
 import { llms, loader } from 'fumadocs-core/source';
-import { mintlifyTree } from './mintlify/navigation';
+import { navigationTree } from './docs/navigation';
 import { docsPath } from '../site.mjs';
 
 export const source = loader({
@@ -8,7 +8,7 @@ export const source = loader({
   source: docs.toFumadocsSource(),
 });
 
-export const pageTree = mintlifyTree((slug) => {
+export const pageTree = navigationTree((slug) => {
   const page = source.getPage(slug.split('/'));
   if (!page) return undefined;
   return { title: page.data.title, sidebarTitle: page.data.sidebarTitle, icon: page.data.icon };

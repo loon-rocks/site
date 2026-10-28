@@ -12,16 +12,16 @@ import { bodyComponents, ExamplePanel, panelComponents } from '@/components/mdx'
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { docsPath, getPageImageUrl, getPageMarkdownUrl, getPageSourceUrl } from '@/lib/shared';
-import { mintlifyGroups, mintlifyRedirects } from '@/lib/mintlify/navigation';
-import { UpdateFilters } from '@/components/mintlify/update-filters';
+import { pageGroups, redirectRules } from '@/lib/docs/navigation';
+import { UpdateFilters } from '@/components/docs/update-filters';
 
 const HOME = '/introduction';
-const groups = mintlifyGroups();
+const groups = pageGroups();
 
 function redirects(): Map<string, string> {
   const urls = source.getPages().map((page) => `/${page.slugs.join('/')}`);
   const out = new Map<string, string>([['/', HOME]]);
-  for (const { source: from, destination } of mintlifyRedirects()) {
+  for (const { source: from, destination } of redirectRules()) {
     if (from.endsWith('/:slug*')) {
       const fromPrefix = from.slice(0, -'/:slug*'.length);
       const toPrefix = destination.slice(0, -'/:slug*'.length);

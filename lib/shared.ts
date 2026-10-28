@@ -1,4 +1,4 @@
-import { githubUrl, siteName } from './mintlify/navigation';
+import { githubUrl, siteName } from './docs/navigation';
 import { docsPath, origin } from '../site.mjs';
 
 export { docsPath, githubUrl, origin, siteName };

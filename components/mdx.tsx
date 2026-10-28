@@ -1,6 +1,6 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
-import * as All from './mintlify';
+import * as All from './docs';
 
 const {
   ExamplePanel,
@@ -10,13 +10,13 @@ const {
   PanelRequestExample,
   PanelResponseExample,
   slugify: _slugify,
-  ...Mintlify
+  ...DocsComponents
 } = All;
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
     ...defaultMdxComponents,
-    ...Mintlify,
+    ...DocsComponents,
     ...components,
   } satisfies MDXComponents;
 }

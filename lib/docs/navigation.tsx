@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Folder, Item, Node, Root } from 'fumadocs-core/page-tree';
-import { Icon } from '@/components/mintlify/icon';
+import { Icon } from '@/components/docs/icon';
 import { docsPath } from '../../site.mjs';
 
 type Entry = string | Group | Ref;
@@ -35,7 +35,7 @@ function children(group: Group): Entry[] {
   return pages.flatMap(expand);
 }
 
-export function mintlifyTree(lookup: (slug: string) => PageInfo | undefined): Root {
+export function navigationTree(lookup: (slug: string) => PageInfo | undefined): Root {
   const manifest = readJson('docs.json');
 
   const item = (slug: string): Item | undefined => {
@@ -85,7 +85,7 @@ export function mintlifyTree(lookup: (slug: string) => PageInfo | undefined): Ro
   return { name: manifest.name, children: top };
 }
 
-export function mintlifyGroups(): Map<string, string> {
+export function pageGroups(): Map<string, string> {
   const groups = new Map<string, string>();
   const walk = (entry: Entry, group: string | undefined) => {
     if (typeof entry === 'string') {
@@ -105,7 +105,7 @@ export function mintlifyGroups(): Map<string, string> {
 
 export type Redirect = { source: string; destination: string };
 
-export function mintlifyRedirects(): Redirect[] {
+export function redirectRules(): Redirect[] {
   return readJson('docs.json').redirects ?? [];
 }
 
