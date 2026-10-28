@@ -2,7 +2,7 @@
   "client_id": "https://loon.rocks/dive/oauth-client.json",
   "client_name": "Dive",
   "client_uri": "https://loon.rocks",
-  "redirect_uris": ["http://127.0.0.1/callback"],
+  "redirect_uris": ["http://localhost/callback", "http://127.0.0.1/callback"],
   "grant_types": ["authorization_code", "refresh_token"],
   "response_types": ["code"],
   "token_endpoint_auth_method": "none"
