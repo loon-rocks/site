@@ -22,7 +22,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check out docs-live
-        run: git submodule update --init --remote --depth 1 dive
+        run: |
+          rm -rf dive
+          git clone --depth 1 --branch docs-live https://github.com/loon-rocks/dive.git dive
 
       - uses: actions/setup-node@v4
         with:
