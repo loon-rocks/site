@@ -5,9 +5,7 @@ import type { MdxjsEsm } from 'mdast-util-mdxjs-esm';
 import type { MdxJsxFlowElement } from 'mdast-util-mdx-jsx';
 import { visit, SKIP } from 'unist-util-visit';
 import type { VFile } from 'vfile';
-import { docsPath } from '../../site.mjs';
-
-export const DOCS_DIR = path.resolve(process.cwd(), 'dive/docs');
+import { docsDir as DOCS_DIR, docsPath } from '../../site.mjs';
 
 const manifest = JSON.parse(readFileSync(path.join(DOCS_DIR, 'docs.json'), 'utf8'));
 const variables: Record<string, string> = manifest.variables ?? {};
