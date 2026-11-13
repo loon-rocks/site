@@ -11,7 +11,7 @@ mise run dev     # http://localhost:3000
 mise run build   # static export into out/
 ```
 
-To preview unreleased docs, check out another dive ref inside `dive/` (`git -C dive fetch origin main && git -C dive checkout FETCH_HEAD`).
+To preview unreleased docs, check out another dive ref inside `dive/` (`git -C dive fetch origin main && git -C dive checkout FETCH_HEAD`), or set `DIVE_DOCS` to the `docs` directory of a dive checkout, uncommitted edits included: `DIVE_DOCS=../dive/docs mise run dev`. From a dive checkout, `mise run docs` does this for you.
 
 ## From a dive commit to loon.rocks/docs
 
@@ -26,7 +26,7 @@ dive main ──release vX.Y.Z──▶ dive docs-live ──repository_dispatch
 
 So the submodule pointer committed here only matters for local builds; production always reads the tip of `docs-live`. Docs merged to dive's `main` between releases appear on loon.rocks with the next release, or locally after checking out `main` inside `dive/`.
 
-The site reads `dive/docs` in place; nothing is copied into this repo. `public/favicon.svg` and `public/docs/images` are symlinks into the submodule, and `source.config.ts` collects every `**/*.mdx` under `dive/docs` except `snippets/`, `shared/` and `shots/`, which are only imported by other pages.
+The site reads `dive/docs`, or `DIVE_DOCS` when it's set, in place; nothing is copied into this repo. Before `dev` and `build`, `scripts/link-docs.mjs` links `public/favicon.svg` and `public/docs/images` into that directory, and `source.config.ts` collects every `**/*.mdx` under it except `snippets/`, `shared/` and `shots/`, which are only imported by other pages.
 
 The build has three parts:
 

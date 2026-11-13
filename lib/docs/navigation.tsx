@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Folder, Item, Node, Root } from 'fumadocs-core/page-tree';
 import { Icon } from '@/components/docs/icon';
-import { docsPath } from '../../site.mjs';
+import { docsDir as DOCS_DIR, docsPath } from '../../site.mjs';
 
 type Entry = string | Group | Ref;
 type Ref = { $ref: string };
@@ -15,8 +15,6 @@ type Group = {
 };
 
 export type PageInfo = { title: string; sidebarTitle?: string; icon?: string };
-
-const DOCS_DIR = path.resolve(process.cwd(), 'dive/docs');
 
 function readJson(relative: string) {
   return JSON.parse(readFileSync(path.join(DOCS_DIR, relative), 'utf8'));

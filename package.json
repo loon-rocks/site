@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "predev": "node scripts/link-docs.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/link-docs.mjs",
+    "build": "next build",
     "start": "serve out",
     "types:check": "next typegen && tsc --noEmit"
   },

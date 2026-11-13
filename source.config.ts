@@ -2,9 +2,10 @@ import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { pageSchema } from 'fumadocs-core/source/schema';
 import { z } from 'zod';
 import { remarkDocs } from './lib/docs/remark';
+import { docsDir } from './site.mjs';
 
 export const docs = defineDocs({
-  dir: 'dive/docs',
+  dir: docsDir,
   docs: {
     files: ['**/*.mdx', '!snippets/**', '!shared/**', '!shots/**'],
     schema: pageSchema.extend({
